@@ -1,0 +1,523 @@
+/**********************************************/
+/*                                            */
+/*             GALAXY ANIMATED BG             */
+/*                                            */
+/*                                            */
+/**********************************************/
+/*  Source: https://github.com/Carla-Codes/starry-night-css-animation/blob/master/index.html   */
+* {
+  margin: 0;
+  padding: 0;
+}
+.title h1 {
+  font-size: 36px;
+  font-family: "Lato", sans-serif;
+  margin-top: 10em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  /* Stryling the text and giving it gradiant */
+  color: #ffffff;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+
+  /* Make sure text is infront of background images */
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.stars,
+.twinkling,
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url(images/stars.png) repeat top center;
+  background-attachment: scroll;
+
+  background-repeat: repeat;
+
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent url(images/twinkling.png) repeat top center;
+  background-attachment: scroll;
+
+  background-repeat: repeat;
+
+  z-index: 1;
+  animation: move-twink-back 200s linear infinite;
+}
+
+/**********************************************/
+/*                                            */
+/*             ASSIGNMENT 2 CSS               */
+/*                                            */
+/**********************************************/
+
+@import url("reset.css"); /*import reset*/
+/* import google font */
+@import url("https://fonts.googleapis.com/css2?family=Figtree&family=Sarabun&display=swap");
+@import url("prettyselect.css");
+
+:root {
+  /* the html element*/
+
+  /* set variables */
+  --dark: #093824;
+  --back: #fff;
+  --borders: #043fa4;
+  --other: #76877d;
+
+  --background: #fff;
+  --periwinkle: #bcc6ed;
+  --darkblue: #043fa4;
+  --purple: #9967bb;
+  --pink: #ffcde1;
+
+  /* fallback for browsers that don't suppor variables */
+  color: #093824;
+  background-color: black;
+
+  color: black;
+  font-family: "Saraburn", sans-serif;
+}
+/**********************************************/
+/*          General Page Sections             */
+/**********************************************/
+
+body {
+  min-height: 100vh; /*fill page vertically, but still get bigger*/
+
+  /*flexbox stacks and spaces header, main and footer vertically*/
+  display: flex;
+  flex-direction: column;
+  z-index: 3; /* Make sure body is infront of background */
+  color: white;
+}
+
+header {
+  /* makes sure header is on left hand side */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* makes sure items in header are centered */
+  color: #fff;
+  height: 90px;
+  padding: 20px;
+
+  z-index: 3; /* Make sure header is infront of background */
+}
+
+main {
+  display: flex; /*stacks nav and section horizontally*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /*remove default stretch*/
+  flex: 1; /* grow this element to fill verical space, pushing footer to bottom*/
+  margin: 1em;
+  align-items: stretch;
+  z-index: 3; /* Make sure main is infront of background images */
+}
+
+section {
+  background-color: rgb(188, 198, 237, 0.2);
+  border: 0.3em solid var(--pink);
+  border-radius: 0.5em; /*rounded corners*/
+  padding: 1em 6em; /*space inside border*/
+
+  /*stacks all sections horizontally*/
+  display: flex;
+  flex-direction: column;
+
+  /* ensures all content is centered across x and y-axis */
+  justify-content: center;
+  align-items: center;
+
+  /* sets margins and ensures a limit is given to width */
+  margin: 0 auto;
+  max-width: 1000px;
+
+  z-index: 3; /* Make sure section is infront of background images */
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+  z-index: 3;
+  color: var(--purple);
+}
+
+/**********************************************/
+/*                 Heading Styles             */
+/**********************************************/
+header h1,
+header img.nav {
+  align-self: center; /*words in the middle veritcally*/
+  font-weight: 900;
+  font-size: 1.8rem;
+
+  margin: 1em 1em 1em 0.5em;
+  color: var(--periwinkle);
+}
+
+section h2 {
+  color: rgb(156, 196, 228);
+
+  text-shadow: 10px 10px 14px rgb(0, 0, 0);
+  font-size: 4rem; /*  inreasing font size   */
+  font-weight: 900; /* making font bold  */
+  padding: 0.5em 0;
+  border-bottom: 0.1em solid var(--pink);
+}
+
+/* sets h3 to pink*/
+h3 {
+  color: var(--pink);
+}
+
+/**********************************************/
+/*                 Form Styles                */
+/**********************************************/
+
+form {
+  display: flex; /*space element divs vertically*/
+  flex-direction: column; /*override default row behavior for flex container*/
+  align-items: center;
+}
+
+form > div {
+  /* will stack contents of form divs and fieldset horizontally, but direct divs are over-ridden later*/
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+}
+
+/* sets the aesthetics of the form labels */
+form label {
+  text-transform: uppercase; /* changes the text to uppercase */
+  color: var(--periwinkle); /* sets colour of text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sets shadows on text */
+  font-size: 1em;
+  font-weight: 800;
+  letter-spacing: 0.3em; /* adds space between letters */
+  margin-bottom: 0.5em;
+}
+
+/* adds space at the bottom of each div*/
+form div {
+  margin-bottom: 1em;
+}
+/* removes background and border from the upload section of addbook.html */
+form.upload section {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: row;
+}
+
+/* All the elements inside the form in addbook.html will align straght center going down */
+form.upload div.left {
+  /* border: 1em solid rgb(255, 0, 0); */
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* sets the aesthetics of the form inputs */
+form input,
+select {
+  background: rgba(255, 255, 255); /* white background */
+  outline: none; /*remove default border*/
+  border-radius: 3em; /*rounded corners*/
+  border: none; /*remove default border*/
+  font-size: 0.9em;
+  padding: 1em; /*spacing inside element (around text)*/
+  color: var(--dark);
+}
+
+/*accessability styles to highlight focused input (keyboard navigation)*/
+form input:focus {
+  outline: 0.2em solid var(--borders);
+}
+
+/**********************************************/
+/*        Nav and Button Styles              */
+/**********************************************/
+/* centers contents of nav bar */
+.logo {
+  display: flex;
+  align-items: center;
+}
+/* sets size of logo */
+.logo img {
+  height: 70px;
+}
+/* sets font sizes and margin of website name "Nebula"*/
+.logo h1 {
+  font-size: 30px;
+  margin: 0;
+  margin-left: 10px;
+}
+/* setting flex display and margins and paddings on list elements */
+nav ul {
+  list-style: none; /* removes bulletpoints from list element*/
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* sets spacing between each nav a links*/
+nav li,
+.account a.home {
+  margin: 0 10px;
+}
+
+/* sets aesthetics of nav a links */
+nav a,
+nav a:visited {
+  color: var(--purple);
+  text-decoration: none; /*removes underlines */
+  font-size: 1.5rem;
+  padding: 1em;
+  font-weight: 800; /* makes font bold */
+}
+
+/* sets aesthetics of other clickable nav a links and buttons*/
+.account a.home {
+  color: var(--pink);
+  background-color: #043fa4;
+  border: 0.1em solid var(--pink); /* adds a border */
+  border-radius: 0.5em; /* rounded borders */
+  text-decoration: none; /*removes underlines */
+  font-size: 2.5rem;
+  padding: 1em;
+  font-weight: 800;
+}
+
+/* sets aesthetics for bigger buttons e.g. Sign In and Log In */
+form div button {
+  color: var(--pink);
+  background-color: #043fa4;
+  border: 0.1em solid var(--pink); /* adds a border */
+  border-radius: 0.5em; /* rounded borders */
+  text-decoration: none; /*removes underlines */
+  text-align: center;
+  font-size: 1rem;
+  padding: 1em;
+  font-weight: 800;
+}
+/* making clear form and auto complete buttons align horizontally */
+.smallerbuttons {
+  display: flex;
+  flex-direction: row;
+}
+
+/* adding space between form and auto complete buttons */
+.smallerbuttons button {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+/* DOESNT WORK DOESNT WORK !
+!!!!!!!
+!!!!!!
+!!!!!!
+!!!!!*/
+
+form div.buttons label {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+/* DOESNT WORK DOESNT WORK !
+!!!!!!!
+!!!!!!
+!!!!!!
+!!!!!*/
+
+/* Style for the active link */
+nav a:active {
+  color: #fff; /* Set the text color to white */
+  background-color: #f00; /* Set the background color to red */
+}
+
+/*swap colours on hover*/
+nav a:hover,
+button:hover {
+  background-color: var(--pink);
+  color: var(--borders);
+  border-radius: 0.2em; /*rounded corners*/
+}
+
+/**********************************************/
+/*                 Div Styles                 */
+/**********************************************/
+/* flex items will wrap onto multiple lines, from top to bottom */
+div.library {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* adds aesthetics to each book div */
+div.books {
+  padding: 1em;
+  display: inline-block; /* makes each div appear horizontally */
+  background-color: rgba(
+    220,
+    215,
+    245,
+    0.934
+  ); /* background colour for each div */
+  border-radius: 0.5em;
+  margin: 1em;
+
+  /* centers text */
+  text-align: center;
+
+  /* setting max height and width so all blocks look the same */
+  width: 250px;
+  max-width: 250px;
+  height: 300px;
+  max-height: 300px;
+}
+
+/* aesthetics for book name and author */
+div.books p {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right; /* makes text appear from the right side */
+}
+
+/* aesthetics for author names */
+div.books p.author {
+  font-size: 15px;
+  font-weight: 20;
+}
+
+/* centers p and img elements in section.cat */
+div.cat {
+  text-align: center;
+}
+
+/* sets all text on details.html to white */
+div div.info,
+div p,
+div pre {
+  color: white;
+}
+
+/**********************************************/
+/*      Other Selector Specefic Changes       */
+/**********************************************/
+
+/**/
+main.register {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+section.register,
+section.register2 {
+  margin: 0;
+}
+
+section.cat,
+section.register2 {
+  background: transparent;
+  border: 0;
+}
+
+/* adds space between cat head and other page elements */
+section.cat div {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+/* adds space below all divs displaying books */
+section.this div {
+  margin-bottom: 2em;
+}
+
+/* sets the dont size and colour for cat speech in div.cat */
+p.cat {
+  font-size: 100px;
+  font-weight: 600;
+  color: white;
+  margin: 0em 1em 0.5em 1em;
+}
+/*------------------------------------------------------------------------------
+|                               Error Styles 
+|-----------------------------------------------------------------------------*/
+
+/* When errors are visible they should be red and have a margin around them */
+.error {
+  color: var(--borders);
+  display: block;
+  margin: 0.5em;
+}
+
+/* make the error disappear */
+.hidden {
+  display: none;
+}
+
+.books {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 20px;
+  z-index: 3;
+}
